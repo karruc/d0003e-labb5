@@ -10,7 +10,26 @@
 #define INPUTHANDLER_H_
 
 
+#include TinyTimber.h
+#include Controller.h
+#include GUI.h
 
+#define nCar (1<<0)
+#define sCar (1<<2)
+
+#define nBridge (1<<1)
+#define sBridge (1<<3)
+
+
+typedef struct {
+    Object super;
+    GUI *gui;
+    Controller *controller;
+} IH;
+
+#define initIH(gui, controller) {initObject(), gui, controller}
+
+void input(IH *self);
 
 
 #endif /* INPUTHANDLER_H_ */
