@@ -11,7 +11,6 @@ void lightsOut(OH *self, int lightsOn) {
 	// Stores a value to be sent further to the simulator
 	int lightStatus = 0;
 	
-	//3 combinations for the two traffic lights:
 	if (lightsOn == 0){ // Both lights are red - cannot go
 		lightStatus = 0xA;
 	}

@@ -9,10 +9,10 @@
 #ifndef INPUTHANDLER_H_
 #define INPUTHANDLER_H_
 
-
-#include TinyTimber.h
 #include Controller.h
 #include GUI.h
+#include TinyTimber.h
+#include <avr/io.h>
 
 #define nCar (1<<0)
 #define sCar (1<<2)
@@ -30,6 +30,5 @@ typedef struct {
 #define initIH(gui, controller) {initObject(), gui, controller}
 
 void input(IH *self);
-
 
 #endif /* INPUTHANDLER_H_ */

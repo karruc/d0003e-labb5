@@ -7,12 +7,23 @@
 
 #include <avr/io.h>
 
+#include "controller.h"
+#include "GUI.h"
+#include "inputHandler.h"
+#include "outputHandler.h"
+#include "TinyTimber.h"
+
 
 int main(void)
 {
-    /* Replace with your application code */
-    while (1) 
-    {
-    }
+	GUI gui = initGUI();
+	OH oh = initOH();
+	Controller controller = initController(&oh, &gui);
+	IH ih = IH(&controller, &gui);
+	
+	INSTALL (&ih, &input, IRQ_USART0_RX);
+	
+	return TINYTIMBER(&controller, initialize, NULL);
+
 }
 

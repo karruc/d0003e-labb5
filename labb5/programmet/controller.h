@@ -2,7 +2,7 @@
  * controller.h
  *
  * Created: 2022-05-04 11:07:53
- *  Author: kruci
+ *  Author: 
  */ 
 
 
@@ -43,25 +43,22 @@ typedef struct {
 
 #define initController(OH, gui){initObject(),{0, 0, 0}, 0, 0, 0, OH, gui}
 
-//Queue
+// Queue
 void newQueue(Controller *self, int dir);
 void decQueue(Controller *self, int dir);
 
-//Bridge
+// Bridge
 void newBridge(Controller *self, int dir);
 void decBridge(Controller *self);
 
 
-//Functions to control the traffic lights
+// Functions to control the traffic lights
 void redLight(Controller *self);
 void greenLight(Controller *self, int dir);
 void nLights(Controller *self);
 void sLights(Controller *self);
 
-//Init queues and lights
+// Init queues and lights
 void init(Controller *self);
-
-
-
 
 #endif /* CONTROLLER_H_ */
