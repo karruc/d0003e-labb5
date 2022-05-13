@@ -19,12 +19,12 @@
 
 #define maxTrough 10 // max 10 one direction before we switch the lights
 
-//Directions and bridge
+// Directions
 #define B 0 // amount of people on the bridge
 #define N 1 // amount of cars in queue towards north
 #define S 2 // amount of cars in queue towards south
 
-
+// Light statuses
 #define BOTHRED 0
 #define GREENTONORTH 1
 #define GREENTOSOUTH 2

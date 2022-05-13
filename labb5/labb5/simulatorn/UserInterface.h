@@ -13,6 +13,6 @@
 
 
 
-
+void userInput(char ch)
 
 #endif /* USERINTERFACE_H_ */
