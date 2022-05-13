@@ -13,6 +13,7 @@
 
 #include <semaphore.h>
 #include <pthread.h>
+#include <unistd.h>
 
 
 sem_t atBridgeSem; // Semaphore for a car that just arrived at the bridge

@@ -10,12 +10,6 @@ void initProgram(void) {
 	sem_init(&atBridgeSem, 0, 0); // Initialize the semaphore for the queue at the bridge
 	sem_init(&onBridgeSem, 0, 0); // Initialize the semaphore for getting on the bridge
 	
-	// Informing the user about an error with initializing mutex for the program
-	// Evaluate the necessity of this.
-	if (pthread_mutex_init(&programMutex, NULL) != 0) {
-		printf("Error during initializing mutex for the program");
-	}
-	
 	lightStatus = BOTHRED;	
 }
 
@@ -50,10 +44,5 @@ void onBridgeManager(void) {
 	while(true) {
 		sem_wait(&onBridgeSem);
 		pthread_t newCar;
-		
-		// Evaluate the necessity of this.
-		if(pthread_create(&newCar, NULL, onBridge, NULL)) {
-			printf("Error during creating a thread for a new car");
-		}
 	}
 }

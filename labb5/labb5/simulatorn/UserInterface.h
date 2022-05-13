@@ -11,8 +11,8 @@
 
 #include "Program.h"
 
-
-
-void userInput(char ch)
+void initUserInterface(void);
+void userInput(char ch);
+void printInTerminal(void);
 
 #endif /* USERINTERFACE_H_ */
