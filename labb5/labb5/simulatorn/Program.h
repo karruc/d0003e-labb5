@@ -28,5 +28,7 @@ void atBridge(int direction);
 void atBridgeManager(void);
 void onBridge(void);
 void onBridgeManager(void);
+void setLightStatus(int _lightStatus);
+void setDirection(int _direction);
 
 #endif /* PROGRAM_H_ */

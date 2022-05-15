@@ -22,14 +22,10 @@ void initUserInterface(void) {
 void userInput(char ch) {
 	while(ch!='e') {
 		if(ch=='n') {
-			pthread_mutex_lock(&programMutex);
-			direction = N;
-			pthread_mutex_unlock(&programMutex);
+			setDirection(N);
 			sem_post(&atBridgeSem);
 		} else if(ch=='s') {
-			pthread_mutex_lock(&programMutex);
-			direction = S;
-			pthread_mutex_unlock(&programMutex);
+			setDirection(S);
 			sem_post(&atBridgeSem);
 		}
 		print("Bye!");

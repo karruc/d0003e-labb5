@@ -23,7 +23,7 @@ typedef struct {
 
 void LCD_init(void);
 void USART_init(void);
-void init(GUI *self);
+void startGUI(GUI *self);
 void writeChar(char ch, int pos);
 void printAt(int pos, int val);
 void printQueueTowardsNorth(GUI *self, int queueLength);

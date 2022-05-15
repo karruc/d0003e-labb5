@@ -34,9 +34,12 @@ void onBridge(void) {
 		queues[lightStatus]--;
 		queues[0]++; // ???
 		pthread_mutex_unlock(&programMutex);
+		
 		sleep(5); // Time it takes for the car to pass
+		
 		pthread_mutex_lock(&programMutex);
 		queues[0]--;
+		pthread_mutex_unlock(&programMutex);
 	}
 }
 
@@ -44,5 +47,18 @@ void onBridgeManager(void) {
 	while(true) {
 		sem_wait(&onBridgeSem);
 		pthread_t newCar;
+		pthread_create(&newCar, NULL, onBridge, NULL);
 	}
+}
+
+void setLightStatus(int _lightStatus) {
+	pthread_mutex_lock(&programMutex);
+	lightStatus = _lightStatus;
+	pthread_mutex_unlock(&programMutex);
+}
+
+void setDirection(int _direction) {	
+	pthread_mutex_lock(&programMutex);
+	direction = _direction;
+	pthread_mutex_unlock(&programMutex);
 }

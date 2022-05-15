@@ -16,12 +16,18 @@ int main(void) {
 	initUserInterface();
 	initControllerInterface();
 	
-	// Our threads. Do we need them all tho? 
+	// Our threads.
 	pthread_t userInputThread;
 	pthread_t atBridgeThread;
 	pthread_t onBridgeThread;
 	pthread_t controllerInterfaceThread;
 	
-	// What is this?
-	//pthread_join(userInputThread, NULL);	
+	// Starts our threads.
+	pthread_create(&userInputThread, NULL, userInput, NULL);
+	pthread_create(&atBridgeThread, NULL, atBridgeManager, NULL);
+	pthread_create(&onBridgeThread, NULL, onBridgeManager, NULL);
+	pthread_create(&controllerInterfaceThread, NULL, readPort, NULL);
+	
+	// Makes your current thread join into the selected thread.
+	pthread_join(userInputThread, NULL);	
 }

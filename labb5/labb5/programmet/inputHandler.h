@@ -9,9 +9,9 @@
 #ifndef INPUTHANDLER_H_
 #define INPUTHANDLER_H_
 
-#include Controller.h
-#include GUI.h
-#include TinyTimber.h
+#include "Controller.h"
+#include "GUI.h"
+#include "TinyTimber.h"
 #include <avr/io.h>
 
 #define nCar (1<<0)

@@ -12,12 +12,12 @@ void newCarInQueue(Controller *self, int dir){
         //Increment North queue
         self->queue[N]++;
         //Update GUI
-        ASYNC(self->gui, disNoQueue, self->queue[N]);
+        ASYNC(self->gui, printQueueTowardsNorth, self->queue[N]);
     } else if(dir == S){
         //Increment South queue
         self->queue[S]++;
         //Update GUI
-        ASYNC(self->gui, disSoQueue, self->queue[S]);
+        ASYNC(self->gui, printQueueTowardsSouth, self->queue[S]);
     }
 }
 
@@ -26,12 +26,12 @@ void deleteCarFromQueue(Controller *self, int dir){
         //Decrease North queue
         self->queue[N]--;
         //Update GUI
-        ASYNC(self->gui, disNoQueue, self->queue[N]);
+        ASYNC(self->gui, printQueueTowardsNorth, self->queue[N]);
     } else if(dir == S){
         //Decrease South queue
         self->queue[S]--;
         //Update GUI
-        ASYNC(self->gui, disSoQueue, self->queue[S]);
+        ASYNC(self->gui, printQueueTowardsSouth, self->queue[S]);
     }
 }
 
@@ -40,24 +40,24 @@ void newCarOnBridge(Controller *self, int dir){
     self->brDir = dir;
     self->passed++;
     self->queue[B]++;
-    ASYNC(self->gui, disBrQueue, self->queue[B]);
+    ASYNC(self->gui, printCarsOnBridge, self->queue[B]);
     AFTER(MSEC(5000), self, deleteCarFromBridge, NULL);
 }
 
 void deleteCarFromBridge(Controller *self){
     self->queue[B]--;
-    ASYNC(self->gui, disBrQueue, self->queue[B]);
+    ASYNC(self->gui, printCarsOnBridge, self->queue[B]);
 }
 
 void redLight(Controller *self){
-    self->passed = 0
+    self->passed = 0;
     self->lights = BOTHRED;
-    ASYNC(self->OH, lightsOut, self->lights);
+    ASYNC(self->OpH, lightsOut, self->lights);
 }
 
 void greenLight(Controller *self, int dir){
     self->lights = dir;
-    ASYNC(self->OH, lightsOut, self->lights);
+    ASYNC(self->OpH, lightsOut, self->lights);
 }
 
 void nLights(Controller *self){
@@ -90,12 +90,12 @@ void sLights(Controller *self){
     }  
 }
 
-void init(Controller *self){
+void startController(Controller *self){
     //Update GUI to display current queues at init
-    ASYNC(self->gui, init, NULL); 
-	ASYNC(self->gui, disNoQueue, self->queue[N]); 
-	ASYNC(self->gui, disSoQueue, self->queue[S]);
-	ASYNC(self->gui, disBrQueue, self->queue[B]);
+    ASYNC(self->gui, startGUI, NULL); 
+	ASYNC(self->gui, printQueueTowardsNorth, self->queue[N]); 
+	ASYNC(self->gui, printQueueTowardsSouth, self->queue[S]);
+	ASYNC(self->gui, printCarsOnBridge, self->queue[B]);
 	
 	//Set initial light to north
 	ASYNC(self, nLights, NULL);

@@ -28,7 +28,7 @@ void USART_init(void){
 	UBRR0L = (unsigned char)AsyncNormalUBRREquation;
 }
 
-void init(GUI *self){
+void startGUI(GUI *self){
 	LCD_init();
 	USART_init();
 }

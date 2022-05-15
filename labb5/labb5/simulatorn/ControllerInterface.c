@@ -34,18 +34,12 @@ void readPort(void) {
 		pthread_mutex_unlock(&controllerInterfaceMutex);
 		
 		if (readFromPort == 0b1010) {
-			pthread_mutex_lock(&programMutex);
-			lightStatus = BOTHRED;
-			pthread_mutex_unlock(&programMutex);
-		} else if (readFromPort == 0b1001) {
-			pthread_mutex_lock(&programMutex);
-			lightStatus = GREENTONORTH;
-			pthread_mutex_unlock(&programMutex);
+			setLightStatus(BOTHRED);
+		} else if (readFromPort == 0b1001) {			
+			setLightStatus(GREENTONORTH);
 			sem_post(&onBridgeSem);	// A car is moving from "at the bridge" to "on the bridge"
 		} else if (readFromPort == 0b0110) {
-			pthread_mutex_lock(&programMutex);
-			lightStatus = GREENTOSOUTH;
-			pthread_mutex_unlock(&programMutex);
+			setLightStatus(GREENTOSOUTH);
 			sem_post(&onBridgeSem);	// A car is moving from "at the bridge" to "on the bridge"
 		}
 	}

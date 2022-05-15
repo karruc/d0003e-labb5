@@ -9,9 +9,6 @@
 #ifndef CONTROLLER_H_
 #define CONTROLLER_H_
 
-#ifndef CARS_H_
-#define CARS_H_
-
 #include "TinyTimber.h"
 #include "outputHandler.h"
 #include "GUI.h"
@@ -57,6 +54,6 @@ void nLights(Controller *self);
 void sLights(Controller *self);
 
 // Init queues and lights
-void init(Controller *self);
+void startController(Controller *self);
 
 #endif /* CONTROLLER_H_ */

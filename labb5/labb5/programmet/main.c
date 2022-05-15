@@ -19,11 +19,11 @@ int main(void)
 	GUI gui = initGUI();
 	OH oh = initOH();
 	Controller controller = initController(&oh, &gui);
-	IH ih = IH(&controller, &gui);
+	IH ih = initIH(&controller, &gui);
 	
 	INSTALL (&ih, &input, IRQ_USART0_RX);
 	
-	return TINYTIMBER(&controller, initialize, NULL);
+	return TINYTIMBER(&controller, startController, NULL);
 
 }
 
