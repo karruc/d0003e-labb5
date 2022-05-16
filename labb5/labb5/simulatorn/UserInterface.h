@@ -10,9 +10,12 @@
 #define USERINTERFACE_H_
 
 #include "Program.h"
+#include <stdio.h>
 
 void initUserInterface(void);
-void userInput(char ch);
+void *userInput(void *arg);
 void printInTerminal(void);
+
+static struct termios programSettings;
 
 #endif /* USERINTERFACE_H_ */

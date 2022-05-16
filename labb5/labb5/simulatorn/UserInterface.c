@@ -9,18 +9,19 @@
 // ??? GO THROUGH THIS, UNDERSTAND THIS AND FIX COMMENTS
 void initUserInterface(void) {
 	//copy current settings
-	tcgetattr(STDIN_FILENO, &prgmTerminalSettings);
+	tcgetattr(STDIN_FILENO, &programSettings);
 
 	//set new settings
-	prgmTerminalSettings.c_lflag &= ~(ICANON) // Disable input buffer until endl or EOF
+	programSettings.c_lflag &= ~(ICANON) // Disable input buffer until endl or EOF
 	&  ~(ECHO);  // Don't echo back typed keys
 		
 	//Save new settings
-	tcsetattr(STDIN_FILENO, TCSANOW, &prgmTerminalSettings);
+	tcsetattr(STDIN_FILENO, TCSANOW, &programSettings);
 }
 
-void userInput(char ch) {
-	while(ch!='e') {
+void *userInput(void *arg) {
+	char ch;
+	while((ch=getchar())!='e') {
 		if(ch=='n') {
 			setDirection(N);
 			sem_post(&atBridgeSem);
@@ -28,7 +29,7 @@ void userInput(char ch) {
 			setDirection(S);
 			sem_post(&atBridgeSem);
 		}
-		print("Bye!");
+		printf("Bye!");
 	}
 }
 

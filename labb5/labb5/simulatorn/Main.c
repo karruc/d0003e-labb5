@@ -9,7 +9,7 @@
 #include "ControllerInterface.h"
 
 int main(void) {
-	print("Hi!");
+	printf("Hi!");
 	
 	// Initialize everything in the simulator
 	initProgram();

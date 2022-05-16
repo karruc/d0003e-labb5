@@ -20,7 +20,7 @@ int port;
 static struct termios portSettings;
 
 void initControllerInterface(void);
-void readPort(void);
+void *readPort(void *arg);
 void atBridgeCI(int direction);
 
 #endif /* CONTROLLERINTERFACE_H_ */

@@ -19,14 +19,14 @@ void atBridge(int direction) {
 	pthread_mutex_unlock(&programMutex);
 }
 
-void atBridgeManager(void) {
+void *atBridgeManager(void *arg) {
 	while(true) {
 		sem_wait(&atBridgeSem);
 		atBridge(direction);
 	}
 }
 
-void onBridge(void) {
+void *onBridge(void *arg) {
 	pthread_mutex_lock(&programMutex);
 	if(queues[lightStatus] <= 0) {
 		pthread_mutex_unlock(&programMutex);
@@ -43,7 +43,7 @@ void onBridge(void) {
 	}
 }
 
-void onBridgeManager(void) {
+void *onBridgeManager(void *arg) {
 	while(true) {
 		sem_wait(&onBridgeSem);
 		pthread_t newCar;

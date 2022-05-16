@@ -24,7 +24,7 @@ void initControllerInterface(void) {
 	portSettings.c_cc[VMIN] =  1; // ?? Read at least 1 char
 }
 	
-void readPort(void) {
+void *readPort(void *arg) {
 	uint8_t readFromPort; // Cause the port must be used with 8 bits words
 	while (true)
 	{
