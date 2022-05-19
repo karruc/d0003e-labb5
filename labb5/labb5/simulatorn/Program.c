@@ -58,5 +58,4 @@ void addCar(int _direction) {
 	pthread_mutex_lock(&programMutex);
 	queues[_direction]++;
 	pthread_mutex_unlock(&programMutex);
-	sem_post(&atBridgeSem);
 }
