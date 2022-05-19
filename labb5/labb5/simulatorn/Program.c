@@ -4,26 +4,23 @@
  * Created: 2022-05-11 14:18:50
  *  Author:
  */ 
+
+#include "CommonLibraries.h"
 #include "Program.h"
 
+sem_t atBridgeSem; // Semaphore for a car that just arrived at the bridge
+sem_t onBridgeSem; // Semaphore for a car that just got on the bridge
+pthread_mutex_t programMutex; // Mutex for everything within Program
+int lightStatus;
+int queues[3];
+int direction;
+
 void initProgram(void) {
-	sem_init(&atBridgeSem, 0, 0); // Initialize the semaphore for the queue at the bridge
 	sem_init(&onBridgeSem, 0, 0); // Initialize the semaphore for getting on the bridge
 	
-	lightStatus = BOTHRED;	
-}
-
-void atBridge(int direction) {
-	pthread_mutex_lock(&programMutex);
-	queues[direction]++;
-	pthread_mutex_unlock(&programMutex);
-}
-
-void *atBridgeManager(void *arg) {
-	while(true) {
-		sem_wait(&atBridgeSem);
-		atBridge(direction);
-	}
+	pthread_mutex_init(&programMutex, NULL);
+	
+	lightStatus = BOTHRED;
 }
 
 void *onBridge(void *arg) {
@@ -57,8 +54,8 @@ void setLightStatus(int _lightStatus) {
 	pthread_mutex_unlock(&programMutex);
 }
 
-void setDirection(int _direction) {	
+void addCar(int _direction) {	
 	pthread_mutex_lock(&programMutex);
-	direction = _direction;
+	queues[_direction]++;
 	pthread_mutex_unlock(&programMutex);
 }

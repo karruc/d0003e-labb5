@@ -9,18 +9,13 @@
 #ifndef CONTROLLERINTERFACE_H_
 #define CONTROLLERINTERFACE_H_
 
-#include "Program.h"
 
-#include <termios.h>
-#include <fcntl.h>
-#include <stdint.h>
+extern pthread_mutex_t controllerInterfaceMutex; // Mutex for everything within ControllerInterface
+extern int port;
+extern struct termios portSettings;
 
-pthread_mutex_t controllerInterfaceMutex; // Mutex for everything within ControllerInterface
-int port;
-static struct termios portSettings;
-
-void initControllerInterface(void);
-void *readPort(void *arg);
-void atBridgeCI(int direction);
+extern void initControllerInterface(void);
+extern void *readPort(void *arg);
+extern void atBridgeCI(int direction);
 
 #endif /* CONTROLLERINTERFACE_H_ */

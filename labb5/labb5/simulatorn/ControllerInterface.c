@@ -5,9 +5,19 @@
  *  Author:
  */ 
 
+#include "CommonLibraries.h"
 #include "ControllerInterface.h"
+#include "Program.h"
+
+
+pthread_mutex_t controllerInterfaceMutex;
+int port;
+struct termios portSettings;
 
 void initControllerInterface(void) {	
+	
+	pthread_mutex_init(&controllerInterfaceMutex, NULL);
+	
 	// Settings for the port that we are communicating with.
 	port = open("/dev/ttyS0", O_RDWR);
 	

@@ -5,17 +5,15 @@
  *  Author:
  */ 
 
-
 #ifndef USERINTERFACE_H_
 #define USERINTERFACE_H_
 
-#include "Program.h"
-#include <stdio.h>
 
-void initUserInterface(void);
-void *userInput(void *arg);
-void printInTerminal(void);
+extern void initUserInterface(void);
+extern void *userInput(void *arg);
+extern void clearBuffer();
+extern void *infoOutput(void *arg);
+extern void printInTerminal(void);
 
-static struct termios programSettings;
 
 #endif /* USERINTERFACE_H_ */
