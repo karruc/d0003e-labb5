@@ -17,5 +17,6 @@ extern struct termios portSettings;
 extern void initControllerInterface(void);
 extern void *readPort(void *arg);
 extern void atBridgeCI(int direction);
+void onBridgeCI(int lightStatus);
 
 #endif /* CONTROLLERINTERFACE_H_ */

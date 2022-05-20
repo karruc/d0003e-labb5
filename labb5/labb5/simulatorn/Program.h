@@ -10,6 +10,9 @@
 #define PROGRAM_H_
 
 
+#include "ControllerInterface.h"
+
+
 #define BOTHRED 0
 #define GREENTONORTH 1
 #define GREENTOSOUTH 2

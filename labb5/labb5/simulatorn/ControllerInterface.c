@@ -67,4 +67,16 @@ void atBridgeCI(int direction) {
 	pthread_mutex_unlock(&controllerInterfaceMutex);
 }
 
+void onBridgeCI(int lightStatus) {
+	uint8_t toWrite;
+	if (lightStatus == GREENTONORTH) {
+		toWrite = 0b0010;
+	} else if (lightStatus == GREENTOSOUTH) {
+		toWrite = 0b1000;
+	}
+	pthread_mutex_lock(&controllerInterfaceMutex);
+	write(port, &toWrite, 1);
+	pthread_mutex_unlock(&controllerInterfaceMutex);
+}
+
 // call to program?
