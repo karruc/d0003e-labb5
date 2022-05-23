@@ -4,26 +4,21 @@
  * Created: 2022-05-04 11:04:48
  * Author : 
  */ 
+#include "CommonLibraries.h"
+#include "UserInterface.h"
+#include "SignalInterface.h"
+#include "Program.h"
 
-#include <avr/io.h>
-
-#include "controller.h"
-#include "GUI.h"
-#include "inputHandler.h"
-#include "outputHandler.h"
-#include "TinyTimber.h"
-
-
-int main(void)
-{
-	GUI gui = initGUI();
-	OH oh = initOH();
-	Controller controller = initController(&oh, &gui);
-	IH ih = initIH(&controller, &gui);
+int main(void) {
 	
-	INSTALL (&ih, &input, IRQ_USART0_RX);
+	UserInterface ui = initUserInterface();
+	SignalInterface si = initSignalInterface(&ui, NULL);
+	Program p = initProgram(&si, &ui);
 	
-	return TINYTIMBER(&controller, startController, NULL);
+	si.program = &p;
+	
+	INSTALL (&si, &triggerOnSignal, IRQ_USART0_RX);
+	return TINYTIMBER(&p, startProgram, NULL);
 
 }
 
