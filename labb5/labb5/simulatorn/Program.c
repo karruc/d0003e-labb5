@@ -53,6 +53,7 @@ void setLightStatus(int _lightStatus) {
 	pthread_mutex_lock(&programMutex);
 	lightStatus = _lightStatus;
 	pthread_mutex_unlock(&programMutex);
+	printf("New light status set: '%d'", _lightStatus);
 }
 
 void addCar(int _direction) {	

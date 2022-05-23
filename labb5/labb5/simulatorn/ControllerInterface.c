@@ -43,6 +43,8 @@ void *readPort(void *arg) {
 		read(port, &readFromPort, 1);
 		pthread_mutex_unlock(&controllerInterfaceMutex);
 		
+		// printf("Data: '%d'\n", readFromPort);
+		
 		if (readFromPort == 0b1010) {
 			setLightStatus(BOTHRED);
 		} else if (readFromPort == 0b1001) {			
