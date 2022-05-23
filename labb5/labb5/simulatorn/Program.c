@@ -32,6 +32,7 @@ void *onBridge(void *arg) {
 		queues[0]++; // ???
 		pthread_mutex_unlock(&programMutex);
 		
+		onBridgeCI(lightStatus);
 		sleep(5); // Time it takes for the car to pass
 		
 		pthread_mutex_lock(&programMutex);
@@ -58,4 +59,5 @@ void addCar(int _direction) {
 	pthread_mutex_lock(&programMutex);
 	queues[_direction]++;
 	pthread_mutex_unlock(&programMutex);
+	atBridgeCI(_direction);
 }

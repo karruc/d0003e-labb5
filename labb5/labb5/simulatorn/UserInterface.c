@@ -42,11 +42,11 @@ void printInTerminal(void) {
 	
 	char* statusString;
 	if (lightStatus == BOTHRED) {
-		statusString = "Both lights are red!";
+		statusString = "Both lights are red!\n";
 	} else if(lightStatus == GREENTONORTH) {
-		statusString = "Light to north: green!\nLight to south: red!";	
+		statusString = "Light to north: green! Light to south: red!\n";	
 	} else {
-		statusString = "Light to north: red!\nLight to south: green!";
+		statusString = "Light to north: red! Light to south: green!\n";
 	}
 	
 	printf("Queue count: [N: %d, _: %d, S: %d] Light status: %s\r", queues[1], queues[0], queues[2], statusString);
