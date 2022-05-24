@@ -49,6 +49,6 @@ void printInTerminal(void) {
 		statusString = "Light to north: red! Light to south: green!\n";
 	}
 	
-	printf("Queue count: [N: %d, _: %d, S: %d] Light status: %s\r", queues[1], queues[0], queues[2], statusString);
+	printf("Queue count: [North: %d, On bridge: %d, South: %d] Light status: %s\r", queues[1], queues[0], queues[2], statusString);
 	pthread_mutex_unlock(&programMutex);
 }

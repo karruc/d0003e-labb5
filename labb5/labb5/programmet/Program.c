@@ -56,11 +56,12 @@ void deleteCarBridge(Program *self) {
 
 void runLights(Program *self) {
 	
+	
 	// Handle situation where both lights are red. If any cars are still on the bridge
 	// these has to be taken into consideration.
 	if (self->lightDirection == BOTHRED) {
 		
-		// If the bridge is empty, brigde status can be reset, and be fully ready to 
+		// If the bridge is empty, bridge status can be reset, and be fully ready to 
 		// turn green for any arriving cars.
 		if (self->carQueues[B] == 0) {
 			
@@ -68,8 +69,10 @@ void runLights(Program *self) {
 			self->carsSinceLightSwitch = 0;
 			
 			if (self->carQueues[N] > 0) {
+				self->travelDirection = N;
 				setLight(self, GREENTONORTH);
 			} else if (self->carQueues[S] > 0) {
+				self->travelDirection = S;
 				setLight(self, GREENTOSOUTH);
 			}
 		}
@@ -77,7 +80,7 @@ void runLights(Program *self) {
 		// Bridge is occupied, if anyone has arrived in the current travel direction
 		// without the max pass being reached they should be allowed to enter the bridge.
 		else if (self->travelDirection != BOTHRED &&
-				self->carsSinceLightSwitch >= maxTrough &&
+				self->carsSinceLightSwitch < maxTrough &&
 				self->carQueues[self->travelDirection] > 0) {
 			setLight(self, self->travelDirection);
 		}
@@ -91,6 +94,8 @@ void runLights(Program *self) {
 		if (self->carQueues[self->lightDirection] == 0 ||
 			self->carsSinceLightSwitch >= maxTrough) {
 			setLight(self, BOTHRED);
+		} else {
+			setLight(self, self->lightDirection);
 		}
 	}
 	
@@ -99,6 +104,8 @@ void runLights(Program *self) {
 }
 
 void setLight(Program *self, int dir) {
+	//self->carQueues[N] += 10;
+	//ASYNC(self->ui, updateOutput, self->carQueues);
 	self->lightDirection = dir;
-	ASYNC(self->si, sendLightSignal, dir);
+	ASYNC(self->si, sendLightSignal, self->lightDirection);
 }

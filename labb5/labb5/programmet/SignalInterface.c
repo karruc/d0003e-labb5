@@ -30,6 +30,7 @@ void triggerOnSignal(SignalInterface *self) {
 
 // Signal out
 void sendLightSignal(SignalInterface *self, int lightSignal) {
+	//self->program->carQueues[N] += 1;
 	int signalToSend =	(lightSignal == 0) ? 0xA : // Both lights are red - cannot go
 						(lightSignal == 1) ? 0x9 : // Northbound light is green (on), southbound is red (off)
 						(lightSignal == 2) ? 0x6 : // Northbound light is red (off), southbound is green (on)

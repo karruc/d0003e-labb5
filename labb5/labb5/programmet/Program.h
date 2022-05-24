@@ -29,7 +29,7 @@ typedef struct Program_s {
 
 #define initProgram(si, ui){initObject(), si, ui, {0, 0, 0}, 0, 0, 0}
 
-#define maxTrough 10 // max 10 one direction before we switch the lights
+#define maxTrough 5 // max 10 one direction before we switch the lights
 
 // Directions
 #define B 0 // amount of cars on the bridge

@@ -40,6 +40,22 @@
         </dependencies>
       </framework-data>
     </AsfFrameworkConfig>
+    <avrtool>com.atmel.avrdbg.tool.atmelice</avrtool>
+    <avrtoolserialnumber>J41800121817</avrtoolserialnumber>
+    <avrdeviceexpectedsignature>0x1E9405</avrdeviceexpectedsignature>
+    <com_atmel_avrdbg_tool_atmelice>
+      <ToolOptions>
+        <InterfaceProperties>
+          <JtagDbgClock>200000</JtagDbgClock>
+        </InterfaceProperties>
+        <InterfaceName>JTAG</InterfaceName>
+      </ToolOptions>
+      <ToolType>com.atmel.avrdbg.tool.atmelice</ToolType>
+      <ToolNumber>J41800121817</ToolNumber>
+      <ToolName>Atmel-ICE</ToolName>
+    </com_atmel_avrdbg_tool_atmelice>
+    <avrtoolinterface>JTAG</avrtoolinterface>
+    <avrtoolinterfaceclock>200000</avrtoolinterfaceclock>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
@@ -120,31 +136,22 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="programmet\controller.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="programmet\controller.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="programmet\GUI.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="programmet\GUI.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="programmet\inputHandler.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="programmet\inputHandler.h">
+    <Compile Include="programmet\CommonLibraries.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="programmet\main.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="programmet\outputHandler.c">
+    <Compile Include="programmet\Program.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="programmet\outputHandler.h">
+    <Compile Include="programmet\Program.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="programmet\SignalInterface.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="programmet\SignalInterface.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="programmet\TinyTimber.c">
@@ -153,33 +160,14 @@
     <Compile Include="programmet\TinyTimber.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="simulatorn\ControllerInterface.c">
+    <Compile Include="programmet\UserInterface.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="simulatorn\ControllerInterface.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="simulatorn\CommonLibraries.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="simulatorn\Main.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="simulatorn\Program.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="simulatorn\Program.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="simulatorn\UserInterface.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="simulatorn\UserInterface.h">
+    <Compile Include="programmet\UserInterface.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="simulatorn" />
     <Folder Include="programmet" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
