@@ -1,9 +1,4 @@
-/*
- * Program.c
- *
- * Created: 2022-05-23 18:58:11
- *  Author: 
- */
+
 #include "CommonLibraries.h"
 #include "Program.h"
 #include "TinyTimber.h"
