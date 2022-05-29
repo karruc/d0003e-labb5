@@ -1,10 +1,3 @@
-/*
- * Program.h
- *
- * Created: 2022-05-23 18:58:23
- *  Author: 
- */ 
-
 
 #ifndef PROGRAM_H_
 #define PROGRAM_H_
