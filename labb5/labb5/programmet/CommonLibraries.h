@@ -1,9 +1,3 @@
-/*
- * CommonLibraries.h
- *
- * Created: 2022-05-23 18:59:54
- *  Author: 
- */ 
 
 
 #ifndef COMMONLIBRARIES_H_
