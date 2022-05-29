@@ -1,9 +1,4 @@
-/*
- * SignalInterface.c
- *
- * Created: 2022-05-23 18:57:59
- *  Author: 
- */ 
+
 
 #include "CommonLibraries.h"
 #include "SignalInterface.h"
