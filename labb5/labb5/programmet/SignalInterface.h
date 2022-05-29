@@ -1,9 +1,3 @@
-/*
- * SignalInterface.h
- *
- * Created: 2022-05-23 18:57:47
- *  Author: 
- */ 
 
 
 #ifndef SIGNALINTERFACE_H_
