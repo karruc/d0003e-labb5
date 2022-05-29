@@ -1,10 +1,3 @@
-/*
- * UserInterface.h
- *
- * Created: 2022-05-23 18:57:19
- *  Author: 
- */ 
-
 
 #ifndef USERINTERFACE_H_
 #define USERINTERFACE_H_
