@@ -1,10 +1,3 @@
-/*
- * UserInterface.c
- *
- * Created: 2022-05-23 18:57:30
- *  Author: 
- */ 
-
 #include "CommonLibraries.h"
 #include "UserInterface.h"
 #include "TinyTimber.h"
